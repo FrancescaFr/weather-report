@@ -1,7 +1,7 @@
 /* hello */
 
 body{
-    background-image: url("/docs/assets/sunny.webp");
+    background-image: url("./assets/sunny.webp");
     /* background-repeat: no-repeat; */
     background-size:cover;
     display: flex;
@@ -42,7 +42,7 @@ button{
 }
 
 #sky-box{
-    background-image: url("/docs/assets/sun_skytype.jpeg");
+    background-image: url("./assets/sun_skytype.jpeg");
     background-size: cover;
     text-shadow: 3px 3px 3px aliceblue;
 }
