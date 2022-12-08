@@ -81,8 +81,6 @@ const resetCity = () => {
   updateTemp();
 };
 const updateTemp = () => {
-  // const lat = null;
-  // const lon = null;
   axios
     .get('http://127.0.0.1:5000/location', { params: { q: state.city } })
     .then((response) => {
@@ -97,8 +95,7 @@ const updateTemp = () => {
           const country = response.data.sys.country;
           state.temp = Math.floor((tempK - 273) * (9 / 5) + 32);
           displayTemp.textContent = `${state.temp}`;
-          state.city += `, ${country}`;
-          viewCity.textContent = state.city;
+          viewCity.textContent = state.city + `, ${country}`;
           tempColor();
         })
         .except((error) => {
