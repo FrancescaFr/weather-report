@@ -41,19 +41,19 @@ const loadControls = () => {
 const tempColor = () => {
   if (state.temp >= 80) {
     weatherBox.style.backgroundColor = 'rgba(255,0,0,0.5)';
-    body.style.backgroundImage = "url('./assets/sunny.webp')";
+    body.style.backgroundImage = "url('./docs/assets/sunny.webp')";
   } else if (state.temp >= 70) {
     weatherBox.style.backgroundColor = 'rgba(255,165,0,0.5)';
-    body.style.backgroundImage = "url('./assets/spring.jpg')";
+    body.style.backgroundImage = "url('./docs/assets/spring.jpg')";
   } else if (state.temp >= 60) {
     weatherBox.style.backgroundColor = 'rgba(255,255,0,0.5)';
-    body.style.backgroundImage = "url('./assets/autumn.jpeg')";
+    body.style.backgroundImage = "url('./docs/assets/autumn.jpeg')";
   } else if (state.temp >= 50) {
     weatherBox.style.backgroundColor = 'rgba(0,128,0,0.5)';
-    body.style.backgroundImage = "url('./assets/snowy.jpg')";
+    body.style.backgroundImage = "url('./docs/assets/snowy.jpg')";
   } else if (state.temp < 50) {
     weatherBox.style.backgroundColor = 'rgba(0,128,128,0.5)';
-    body.style.backgroundImage = "url('./assets/snowy.jpg')";
+    body.style.backgroundImage = "url('./docs/assets/snowy.jpg')";
   }
 };
 
@@ -112,13 +112,13 @@ const updateTemp = () => {
 
 const updateSkyType = () => {
   if (skyType.options[skyType.selectedIndex].value === 'sunny') {
-    skyBox.style.backgroundImage = " url('./assets/sun_skytype.jpeg')";
+    skyBox.style.backgroundImage = "url('./docs/assets/sun_skytype.jpeg')";
   } else if (skyType.options[skyType.selectedIndex].value === 'cloudy') {
-    skyBox.style.backgroundImage = " url('./assets/cloudy.jpg')";
+    skyBox.style.backgroundImage = "url('./docs/assets/cloudy.jpg')";
   } else if (skyType.options[skyType.selectedIndex].value === 'rainy') {
-    skyBox.style.backgroundImage = " url('./assets/rainy.jpeg')";
+    skyBox.style.backgroundImage = "url('./docs/assets/rainy.jpeg')";
   } else if (skyType.options[skyType.selectedIndex].value === 'snowy') {
-    skyBox.style.backgroundImage = " url('./assets/snow_skytype.jpeg')";
+    skyBox.style.backgroundImage = "url('./docs/assets/snow_skytype.jpeg')";
   }
 };
 
