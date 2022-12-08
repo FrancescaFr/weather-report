@@ -11,6 +11,8 @@ let displayTemp = null;
 let minusButton = null;
 let weatherBox = null;
 let body = null;
+let textBox = null;
+let viewCity = null;
 
 const loadControls = () => {
   state.city = document.getElementById('city');
@@ -20,6 +22,8 @@ const loadControls = () => {
   minusButton = document.getElementById('minus');
   weatherBox = document.getElementById('weather-box');
   body = document.querySelector('body');
+  textBox = document.getElementById('city');
+  viewCity = document.getElementById('view-city');
 };
 
 const tempColor = () => {
@@ -53,10 +57,16 @@ const decreaseTemp = () => {
   tempColor();
 };
 
+const updateCity = () => {
+  state.city = textBox.value;
+  viewCity.textContent = state.city;
+}
+
 const registerEventHandlers = () => {
   loadControls();
   plusButton.addEventListener('click', increaseTemp);
   minusButton.addEventListener('click', decreaseTemp);
+  textBox.addEventListener('input', updateCity);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
