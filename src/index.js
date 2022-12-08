@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const state = {
   city: 'Dallol',
-  temp: 48,
+  temp: 70,
   skyType: 'Sunny',
 };
 
@@ -121,6 +121,7 @@ const updateSkyType = () => {
 
 const registerEventHandlers = () => {
   loadControls();
+  updateTemp();
   plusButton.addEventListener('click', increaseTemp);
   minusButton.addEventListener('click', decreaseTemp);
   textBox.addEventListener('input', updateCity);
