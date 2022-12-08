@@ -12,11 +12,13 @@ body{
 header{
     text-align: center;
     padding: 1em;
-    background-color: blueviolet;
+    background-color: rgb(92, 84, 99, 0.5);
+
 }
 
 .element-box{
-    min-width: 300px;
+    min-width: 350px;
+    min-height: 100px;
     text-align: center;
     border: .1em solid black;
     padding: 1em;
@@ -33,4 +35,5 @@ button{
 
 #sky-box{
     background-image: url("/assets/sun_skytype.jpeg");
+    background-size: cover;
 }
