@@ -41,7 +41,7 @@ const loadControls = () => {
 const tempColor = () => {
   if (state.temp >= 80) {
     weatherBox.style.backgroundColor = 'rgba(255,0,0,0.5)';
-    body.style.backgroundImage = URL('~/assets/sunny.webp', import.meta.url);
+    body.style.backgroundImage = "url('~/assets/sunny.webp')";
   } else if (state.temp >= 70) {
     weatherBox.style.backgroundColor = 'rgba(255,165,0,0.5)';
     body.style.backgroundImage = "url('./assets/spring.jpg')";
