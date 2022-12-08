@@ -38,19 +38,19 @@ const loadControls = () => {
 
 const tempColor = () => {
   if (state.temp >= 80) {
-    weatherBox.style.backgroundColor = 'red';
+    weatherBox.style.backgroundColor = 'rgba(255,0,0,0.5)';
     body.style.backgroundImage = "url('./assets/sunny.webp')";
   } else if (state.temp >= 70) {
-    weatherBox.style.backgroundColor = 'orange';
+    weatherBox.style.backgroundColor = 'rgba(255,165,0,0.5)';
     body.style.backgroundImage = "url('./assets/spring.jpg')";
   } else if (state.temp >= 60) {
-    weatherBox.style.backgroundColor = 'yellow';
+    weatherBox.style.backgroundColor = 'rgba(255,255,0,0.5)';
     body.style.backgroundImage = "url('./assets/autumn.jpeg')";
   } else if (state.temp >= 50) {
-    weatherBox.style.backgroundColor = 'green';
+    weatherBox.style.backgroundColor = 'rgba(0,128,0,0.5)';
     body.style.backgroundImage = "url('./assets/snowy.jpg')";
   } else if (state.temp < 50) {
-    weatherBox.style.backgroundColor = 'teal';
+    weatherBox.style.backgroundColor = 'rgba(0,128,128,0.5)';
     body.style.backgroundImage = "url('./assets/snowy.jpg')";
   }
 };
