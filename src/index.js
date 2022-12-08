@@ -16,6 +16,8 @@ let viewCity = null;
 let getTempButton = null;
 let resetButton = null;
 let setButton = null;
+let skyBox = null;
+let skyType = null;
 
 const loadControls = () => {
   state.city = document.getElementById('city');
@@ -30,6 +32,8 @@ const loadControls = () => {
   getTempButton = document.getElementById('current-temp');
   resetButton = document.getElementById('reset-city');
   setButton = document.getElementById('set-city');
+  skyBox = document.getElementById('sky-box');
+  skyType = document.getElementById('sky-type');
 };
 
 const tempColor = () => {
@@ -38,7 +42,7 @@ const tempColor = () => {
     body.style.backgroundImage = "url('./assets/sunny.webp')";
   } else if (state.temp >= 70) {
     weatherBox.style.backgroundColor = 'orange';
-    body.style.backgroundImage = "url('./assets/spring.jpeg')";
+    body.style.backgroundImage = "url('./assets/spring.jpg')";
   } else if (state.temp >= 60) {
     weatherBox.style.backgroundColor = 'yellow';
     body.style.backgroundImage = "url('./assets/autumn.jpeg')";
@@ -66,45 +70,65 @@ const decreaseTemp = () => {
 const updateCity = () => {
   state.city = textBox.value;
   viewCity.textContent = state.city;
-}
+};
 
 const resetCity = () => {
   state.city = 'Dallol';
   viewCity.textContent = state.city;
   textBox.value = state.city;
   updateTemp();
-}
+};
 const updateTemp = () => {
   // const lat = null;
   // const lon = null;
-  axios.get('http://127.0.0.1:5000/location', { params: { 'q': state.city } })
+  axios
+    .get('http://127.0.0.1:5000/location', { params: { q: state.city } })
     .then((response) => {
       const lat = response.data[0].lat;
       const lon = response.data[0].lon;
-      axios.get('http://127.0.0.1:5000/weather', { params: { 'lat': lat, 'lon': lon } })
+      axios
+        .get('http://127.0.0.1:5000/weather', {
+          params: { lat: lat, lon: lon },
+        })
         .then((response) => {
           const tempK = response.data.main.temp;
-          state.temp = Math.floor(((tempK - 273) * (9 / 5)) + 32)
+          const country = response.data.sys.country;
+          state.temp = Math.floor((tempK - 273) * (9 / 5) + 32);
           displayTemp.textContent = `${state.temp}`;
+          state.city += `, ${country}`;
+          viewCity.textContent = state.city;
           tempColor();
         })
         .except((error) => {
-          console.log("Error: Could not get Weather")
-        })
+          console.log('Error: Could not get Weather');
+        });
     })
     .except((error) => {
-      console.log("Error: COuld not get Lat Lon")
-    })
-}
+      console.log('Error: Could not get Lat Lon');
+    });
+};
+
+const updateSkyType = () => {
+  if (skyType.options[skyType.selectedIndex].value === 'sunny') {
+    skyBox.style.backgroundImage = " url('./assets/sun_skytype.jpeg')";
+  } else if (skyType.options[skyType.selectedIndex].value === 'cloudy') {
+    skyBox.style.backgroundImage = " url('./assets/cloudy.jpg')";
+  } else if (skyType.options[skyType.selectedIndex].value === 'rainy') {
+    skyBox.style.backgroundImage = " url('./assets/rainy.jpeg')";
+  } else if (skyType.options[skyType.selectedIndex].value === 'snowy') {
+    skyBox.style.backgroundImage = " url('./assets/snow_skytype.jpeg')";
+  }
+};
 
 const registerEventHandlers = () => {
   loadControls();
   plusButton.addEventListener('click', increaseTemp);
   minusButton.addEventListener('click', decreaseTemp);
   textBox.addEventListener('input', updateCity);
-  getTempButton.addEventListener("click", updateTemp);
-  resetButton.addEventListener("click", resetCity);
-  setButton.addEventListener("click", updateTemp);
+  getTempButton.addEventListener('click', updateTemp);
+  resetButton.addEventListener('click', resetCity);
+  setButton.addEventListener('click', updateTemp);
+  skyType.addEventListener('change', updateSkyType);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);

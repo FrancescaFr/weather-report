@@ -30,3 +30,7 @@ button{
 #weather-box{
     background-color: teal;
 }
+
+#sky-box{
+    background-image: url("/assets/sun_skytype.jpeg");
+}
